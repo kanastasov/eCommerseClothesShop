@@ -1,21 +1,20 @@
-//start node server
-
-require('dotenv').config({ path: 'variables.env'});
+require('dotenv').config({ path: 'variables.env' });
 const createServer = require('./createServer');
 const db = require('./db');
 
 const server = createServer();
 
-// Use express middleware to handle cookies(JWT)
-// use express middleware to populate current user
+// TODO Use express middlware to handle cookies (JWT)
+// TODO Use express middlware to populate current user
 
-server.start({
+server.start(
+  {
     cors: {
-        credentials: true,
-        origin: process.env.FRONTEND_URL,
+      credentials: true,
+      origin: process.env.FRONTEND_URL,
     },
-
-}, deets => {
-    console.log(`Server is now running on port 
-    http://localhost:${deets.port}`);
-});
+  },
+  deets => {
+    console.log(`Server is now running on port http://localhost:${deets.port}`);
+  }
+);
